@@ -1,0 +1,44 @@
+Webflow Extractor — Source-Available License
+
+Copyright (c) 2026 Chaitanya Sai. All rights reserved.
+
+This repository is public so people can read, learn from and review the code of
+Webflow Extractor. It is NOT open source. Reading the code does not give you the
+right to copy, reuse or redistribute it.
+
+1. What you MAY do
+   a. View and read the source code on GitHub, and fork it on GitHub only as far
+      as GitHub's Terms of Service require for public repositories.
+   b. Load the unmodified extension into your own browser for your own personal
+      or internal use.
+   c. Use, host, change and sell the websites you export with Webflow Extractor.
+      The files the extension adds to an export (the /cms editor, preview server,
+      server functions and middleware) may be used, changed and deployed as part
+      of that exported website.
+   d. Open issues and pull requests. By submitting a contribution you agree that
+      the copyright holder may use it under any license, including this one.
+
+2. What you may NOT do without written permission from the copyright holder
+   a. Copy, modify, merge or reuse this code, or any substantial part of it, in
+      another project, product, extension, app or service.
+   b. Publish, redistribute, sublicense or sell this extension or a modified
+      version of it, including on the Chrome Web Store or any other store.
+   c. Remove or change this license or any copyright notice.
+
+3. Third-party software
+   Parts of this repository and of the built extension come from third-party
+   packages (for example JSZip, React, heic-to/libheif, linkedom and Astryx). Those parts
+   remain under their own licenses, which are not changed by this one.
+
+4. No warranty
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+   IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+   CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Webflow is a trademark of Webflow, Inc. Webflow Extractor is an independent tool and
+is not affiliated with or endorsed by Webflow.
+
+For permission requests, open an issue on this repository.
