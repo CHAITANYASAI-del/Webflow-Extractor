@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webflow Extractor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="not-webflow.css" />
+</head>
+<body>
+<div class="ext-root">
+
+  <!-- Full background image (behind everything) -->
+  <img class="full-bg" src="assets/full-bg.png" alt="" />
+
+  <!-- Vertical dot strips (CSS-built) -->
+  <div class="vdots vdots--left">
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+  </div>
+  <div class="vdots vdots--right">
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+  </div>
+
+  <!-- ═══ HERO content ═══ -->
+  <div class="hero">
+    <div class="hero__title">
+      <img src="assets/title.svg" alt="Webflow Extractor" />
+    </div>
+    <div class="hero__logo">
+      <img src="assets/logo.svg" alt="" />
+    </div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div class="main-content">
+
+    <!-- Info bar -->
+    <div class="info-bar">
+      <div class="info-bar__icon">
+        <img src="assets/link-icon.svg" alt="" />
+      </div>
+      <div class="info-bar__text">
+        <span class="info-bar__label">ACTIVE SITE</span>
+        <span class="info-bar__url" id="site-url">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Content card with bee + message -->
+    <div class="content-card">
+      <!-- Background: Image (luminosity) + Rectangle overlay (overlay blend) -->
+      <div class="card-bg-image">
+        <img src="assets/1cdd372c5bd0642dacd0a6805f8dd2cf07b6646e.png" alt="" />
+        <div class="card-bg-overlay"></div>
+      </div>
+
+      <!-- Sad bee -->
+      <img class="bee-img" src="assets/dcb33e425185f48e07425eaca820ab9f376dd4c3.png" alt="" />
+
+      <!-- Text -->
+      <div class="message">
+        <p class="message__quote">I can&rsquo;t<br>work like this&hellip;</p>
+        <p class="message__body">Navigate to a Webflow website first, then click the extension.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<script src="not-webflow.js"></script>
+</body>
+</html>

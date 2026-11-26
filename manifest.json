@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Webflow Extractor – Export Webflow Site to HTML & Self-Host Free",
+  "short_name": "Webflow Extractor",
+  "version": "1.0.0",
+  "description": "Export your Webflow website to HTML, CSS & JS with every page and CMS item. Self-host free on Netlify, Vercel or GitHub Pages.",
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Webflow Extractor – export this Webflow site",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

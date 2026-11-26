@@ -1,0 +1,9 @@
+{
+  "name": "webflow-site",
+  "private": true,
+  "type": "module",
+  "description": "Static site exported with Webflow Extractor. Dependencies are only used by the optional CMS admin (/cms) on Vercel.",
+  "dependencies": {
+    "@vercel/blob": "^2.0.0"
+  }
+}

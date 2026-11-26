@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>wfx browser test</title><pre id="o">running…</pre>
+<script src="../../webflow-cms.js"></script>
+<script>
+(async()=>{const out=[];for(const name of ['legend','floria','jules','article']){
+ const pages=await (await fetch(name+'.json')).json(); const ref=await (await fetch(name+'.linkedom.json')).json();
+ const t=performance.now(); const r=WFXCMS.annotate(pages,{DOMParser});
+ const sum=r.manifest.collections.map(c=>`${c.name}×${c.items.length}:${c.fields.map(f=>f.kind).join(',')}:L${c.listPages.length}`).join(' | ');
+ const marks=[...r.pages].map(([k,h])=>k+':'+(h.match(/data-wfx-[fi]="[^"]*"/g)||[]).length).sort().join(';');
+ out.push(`${name}: ${Math.round(performance.now()-t)}ms  collections ${sum===ref.sum?'SAME':'DIFF'}  marks ${marks===ref.marks?'SAME':'DIFF'}`);
+ if(sum!==ref.sum) out.push('  browser : '+sum+'\n  linkedom: '+ref.sum);
+ if(marks!==ref.marks){const a=marks.split(';'),b=ref.marks.split(';');out.push('  marks differ: '+a.filter(x=>!b.includes(x)).slice(0,5).join(' ')+' vs '+b.filter(x=>!a.includes(x)).slice(0,5).join(' '));}
+}document.getElementById('o').textContent=out.join('\n');window.__done=out;})().catch(e=>{document.getElementById('o').textContent='ERR '+e.stack});
+</script>

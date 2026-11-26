@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webflow Extractor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+<div class="ext-root">
+
+  <!-- Full background image (behind everything) -->
+  <img class="full-bg" src="assets/full-bg.png" alt="" />
+
+  <!-- Vertical dot strips (CSS-built) -->
+  <div class="vdots vdots--left">
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+  </div>
+  <div class="vdots vdots--right">
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+    <div class="vbar"></div><div class="vbar"></div><div class="vbar"></div><div class="vbar"></div>
+  </div>
+
+  <!-- ═══ HERO content ═══ -->
+  <div class="hero">
+    <!-- Title (SVG) -->
+    <div class="hero__title">
+      <img src="assets/title.svg" alt="Webflow Extractor" />
+    </div>
+
+    <!-- Logo -->
+    <div class="hero__logo">
+      <img src="assets/logo.svg" alt="" />
+    </div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT (bottom portion) ═══ -->
+  <div class="main-content">
+
+    <!-- Info bar (top radius only) -->
+    <div class="info-bar" id="site-info">
+      <div class="info-bar__icon">
+        <img src="assets/link-icon.svg" alt="" />
+      </div>
+      <div class="info-bar__text">
+        <span class="info-bar__label">ACTIVE SITE</span>
+        <span class="info-bar__url" id="site-url">Loading...</span>
+      </div>
+      <!-- Hidden badge for JS compatibility -->
+      <div id="site-badge" class="badge" style="display:none!important">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Detecting...</span>
+      </div>
+    </div>
+
+    <!-- Hidden element for JS compatibility (not-webflow redirect handled in popup.js) -->
+    <div id="not-webflow-warning" style="display:none"></div>
+
+    <!-- Content card (top radius only) -->
+    <div class="content-card">
+      <!-- Clouds background image (behind the steps card) -->
+      <div class="card-bg-image">
+        <img src="assets/clouds.png" alt="" />
+      </div>
+
+      <!-- Progress (shown during extraction — above steps) -->
+      <div id="progress-container" class="progress-wrap" style="display:none">
+        <div class="progress-header">
+          <span id="progress-label" class="progress-label">Initializing...</span>
+          <span id="progress-pct" class="progress-pct">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Log (shown during extraction — above steps) -->
+      <div id="log-container" class="log-wrap" style="display:none">
+        <div class="log-header">
+          <span class="log-header-dot log-header-dot--red"></span>
+          <span class="log-header-dot log-header-dot--yellow"></span>
+          <span class="log-header-dot log-header-dot--green"></span>
+          <span class="log-header-title">Extraction Log</span>
+        </div>
+        <div id="log" class="log"></div>
+      </div>
+
+      <!-- Steps section (separate bordered card) -->
+      <div id="steps-container" class="steps-card">
+        <div class="step" id="step-scan">
+          <div class="step__indicator"><div class="step__dot step__dot--idle"></div></div>
+          <div class="step__content">
+            <p class="step__title">Scan Page</p>
+            <p class="step__desc">HTML &middot; images &middot; fonts &middot; videos &middot; Lottie</p>
+          </div>
+          <div class="step__count" id="step-scan-count">&mdash;</div>
+        </div>
+        <div class="step" id="step-fetch">
+          <div class="step__indicator"><div class="step__dot step__dot--idle"></div></div>
+          <div class="step__content">
+            <p class="step__title">Download Assets</p>
+            <p class="step__desc">Images &middot; fonts &middot; scripts &middot; videos &middot; Lottie</p>
+          </div>
+          <div class="step__count" id="step-fetch-count">&mdash;</div>
+        </div>
+        <div class="step" id="step-rewrite">
+          <div class="step__indicator"><div class="step__dot step__dot--idle"></div></div>
+          <div class="step__content">
+            <p class="step__title">Separate & Rewrite</p>
+            <p class="step__desc">HTML &middot; css/ &middot; js/ &middot; relative paths</p>
+          </div>
+          <div class="step__count" id="step-rewrite-count">&mdash;</div>
+        </div>
+        <div class="step" id="step-zip">
+          <div class="step__indicator"><div class="step__dot step__dot--idle"></div></div>
+          <div class="step__content">
+            <p class="step__title">Package ZIP</p>
+            <p class="step__desc">Structured folders ready to self-host</p>
+          </div>
+          <div class="step__count" id="step-zip-count">&mdash;</div>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="actions">
+        <div class="btn-outer">
+          <button id="extract-btn" class="btn btn--primary" disabled>
+            <img src="assets/download-icon.svg" alt="" class="btn__icon" />
+            <span>Extract Site</span>
+          </button>
+        </div>
+        <button id="download-btn" class="btn btn--download" style="display:none">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M2.5 12.5h10M7.5 1.5v8M4.5 7l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Download ZIP</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<script src="jszip.min.js"></script>
+<script src="webflow-cms.js"></script>
+<script src="core.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

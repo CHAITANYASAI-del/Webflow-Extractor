@@ -1,0 +1,288 @@
+/* ═══════════════════════════════════════════════════════════════
+   Not Webflow — shown when user opens extension on non-Webflow site
+   Same hero/bars/info-bar as popup.css, different content card
+   ═══════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:           #006DFF;
+  --blue-label:     #B2C6E7;
+  --white:          #FFFFFF;
+  --surface:        #F8FBFC;
+  --border-light:   #F4F4F4;
+  --text-dark:      #191919;
+  --font:           'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html, body {
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--text-dark);
+  width: 420px;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* ─── Root ─────────────────────────────────────────────────── */
+.ext-root {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--white);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FULL BACKGROUND — identical to popup.css
+   ═══════════════════════════════════════════════════════════════ */
+.full-bg {
+  position: absolute;
+  top: -90px;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: top center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VERTICAL BAR STRIPS — identical to popup.css
+   ═══════════════════════════════════════════════════════════════ */
+.vdots {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vdots--left  { left: 0; }
+.vdots--right { right: 0; }
+
+.vbar {
+  width: 15px;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.20) -13.72%, rgba(255, 255, 255, 0.10) 50%, rgba(255, 255, 255, 0.01) 180.18%);
+  background-blend-mode: color-dodge;
+  backdrop-filter: blur(15.09px);
+  -webkit-backdrop-filter: blur(15.09px);
+}
+
+.vdots--left .vbar:nth-child(6)  { opacity: 0.7; }
+.vdots--left .vbar:last-child    { opacity: 0.35; }
+.vdots--right .vbar:first-child  { opacity: 0.35; }
+.vdots--right .vbar:nth-child(2) { opacity: 0.7; }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO — identical to popup.css
+   ═══════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  height: 252px;
+  z-index: 2;
+}
+
+.hero__title {
+  position: absolute;
+  top: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 190px;
+}
+
+.hero__title img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 12px rgba(0, 50, 120, 0.2));
+}
+
+.hero__logo {
+  position: absolute;
+  top: 149px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 132px;
+  height: 132px;
+  z-index: 3;
+}
+
+.hero__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 20px rgba(0, 80, 180, 0.15));
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MAIN CONTENT — identical to popup.css
+   ═══════════════════════════════════════════════════════════════ */
+.main-content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ─── Info Bar — identical to popup.css ───────────────────── */
+.info-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--white);
+  border-radius: 16px 16px 0 0;
+  margin: 0 18px;
+  position: relative;
+  z-index: 5;
+}
+
+.info-bar__icon {
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 0.4px solid var(--border-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-bar__icon img {
+  width: 22px;
+  height: 22px;
+}
+
+.info-bar__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.info-bar__label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--blue-label);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.info-bar__url {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTENT CARD — bee + message (not-webflow specific)
+   ═══════════════════════════════════════════════════════════════ */
+.content-card {
+  background: var(--white);
+  border-radius: 28px 28px 0 0;
+  margin-top: -4px;
+  padding: 20px 24px 12px;
+  position: relative;
+  z-index: 6;
+  box-shadow: 0 -2px 22px 0 rgba(25, 25, 25, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  isolation: isolate;
+}
+
+/* ─── Clouds bg: luminosity layer + overlay layer (Figma exact) ─── */
+
+/* Container with white bg for blend modes to work against */
+.card-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+/* Layer 1 (bottom): Image — luminosity blend, 100% opacity */
+.card-bg-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 124.88%;
+  object-fit: cover;
+  object-position: center top;
+  mix-blend-mode: luminosity;
+}
+
+/* Layer 2 (top): Rectangle #B2C6E7 — overlay blend, 100% opacity
+   Same size & position as image, sits ON TOP of image */
+.card-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 124.88%;
+  background: #B2C6E7;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Sad bee image ──────────────────────────────────────── */
+.bee-img {
+  position: relative;
+  z-index: 1;
+  width: 172px;
+  height: 172px;
+  object-fit: contain;
+}
+
+/* ─── Text section ───────────────────────────────────────── */
+.message {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 0 16px 16px;
+}
+
+.message__quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 29px;
+  font-weight: 700;
+  color: #B2C6E7;
+  line-height: 1.2;
+}
+
+.message__body {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.5;
+  max-width: 220px;
+}

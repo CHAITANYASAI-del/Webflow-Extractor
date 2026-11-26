@@ -1,0 +1,4 @@
+# Static site exported with Webflow Extractor — no build step needed.
+[build]
+  publish = "."
+  functions = "netlify/functions"

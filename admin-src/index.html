@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>CMS · Webflow Extractor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Last resort: if the CMS never appears (script failed to load), say so
+      setTimeout(function () {
+        var r = document.getElementById('root');
+        if (r && !r.children.length) r.innerHTML = '<div style="font:14px/1.5 system-ui,sans-serif;max-width:460px;margin:15vh auto;padding:24px;border:1px solid #e5e5e5;border-radius:12px;color:#111;background:#fff"><b>The CMS didn\u2019t load.</b><p style="color:#555">Check your connection, turn off any blocker extension for this site, then reload.</p>' + (window.__fxErrs.length ? '<pre style="white-space:pre-wrap;font-size:11px;color:#b00;background:#fafafa;padding:8px;border-radius:6px">' + window.__fxErrs.slice(0, 5).join('\\n').replace(/</g, '&lt;') + '</pre>' : '<p style="font-size:12px;color:#888">No error was reported — the CMS script may have been blocked before it ran (' + navigator.userAgent.split(') ').pop() + ').</p>') + '<button onclick="location.reload()" style="font:inherit;font-weight:600;padding:8px 14px;border:0;border-radius:8px;background:#0b63f6;color:#fff;cursor:pointer">Reload</button></div>';
+      }, 10000);
+    </script>
+    <script>
+      // Remember what goes wrong while the CMS starts, to show it if it can't
+      window.__fxErrs = [];
+      addEventListener('error', function (e) {
+        var t = e.target;
+        window.__fxErrs.push(t && t !== window && (t.src || t.href) ? 'Couldn\u2019t load ' + (t.src || t.href) : (e.message || 'Script error') + (e.filename ? ' (' + e.filename.split('/').pop() + ':' + e.lineno + ')' : ''));
+      }, true);
+      addEventListener('unhandledrejection', function (e) { window.__fxErrs.push('Unhandled: ' + (e.reason && (e.reason.message || e.reason))); });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
